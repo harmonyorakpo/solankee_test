@@ -17,24 +17,23 @@
       <span class="text-xl font-semibold mb-2">
         {{ product?.price | currency : "EUR" }}
       </span>
-      
-      @if(product; as p) {
-        <span
-          class="text-xs font-medium mb-1"
-          [ngClass]="{
-            'text-green-600': p.quantity > 0,
-            'text-red-600': p.quantity === 0
-          }"
-        >
-          {{ p.quantity > 0 ? "In Stock" : "Out of Stock" }}
-        </span>
 
-        @if(p.quantity > 0) {
-          <span class="text-xs text-gray-500 mb-3">
-            Quantity Available: {{ p.quantity }}
-          </span>
-        }
-      }
+      @if(product; as p) {
+      <span
+        class="text-xs font-medium mb-1"
+        [ngClass]="{
+          'text-green-600': p.quantity > 0,
+          'text-red-600': p.quantity === 0
+        }"
+      >
+        {{ p.quantity > 0 ? "In Stock" : "Out of Stock" }}
+      </span>
+
+      @if(p.quantity > 0) {
+      <span class="text-xs text-gray-500 mb-3">
+        Quantity Available: {{ p.quantity }}
+      </span>
+      } }
 
       <span class="text-sm mb-6">
         {{ product?.description }}
@@ -44,6 +43,7 @@
           class="bg-primary w-full rounded-sm btn"
           mat-flat-button
           (click)="addToCart(product)"
+          [disabled]="product?.quantity === 0"
         >
           Add to cart
         </button>

@@ -23,14 +23,25 @@
         <span class="text-xl font-semibold mb-2">
           {{ item.price | currency : "EUR" }}
         </span>
+
+        <span
+          class="text-xs font-medium mb-1"
+          [ngClass]="{
+            'text-red-600': item.quantity === 0
+          }"
+        >
+          {{ item.quantity < 0 ? "Out of Stock" : "" }}
+        </span>
+
         <span class="text-sm mb-6">
-          {{ item.description | truncate:50 }}
+          {{ item.description | truncate : 50 }}
         </span>
         <div class="mt-auto">
           <button
             class="bg-primary w-full lg:opacity-0 lg:invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 rounded-sm btn"
             mat-flat-button
             (click)="addToCart($event, item)"
+            [disabled]="item.quantity === 0"
           >
             Add to cart
           </button>
