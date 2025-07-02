@@ -5,19 +5,41 @@ import { MatInputModule } from '@angular/material/input';
 import { TruncatePipe } from '@pipes/truncate-pipe';
 import { Product } from '@services/product';
 import { Subject } from 'rxjs';
-import { Loader } from "../../../shared/components/loader/loader";
+import { Loader } from '../../../shared/components/loader/loader';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { IProduct } from '@models/product.model';
 
 @Component({
   selector: 'app-product-list',
-  imports: [CommonModule, TruncatePipe, MatInputModule, MatButtonModule, Loader],
+  imports: [
+    CommonModule,
+    TruncatePipe,
+    MatInputModule,
+    MatButtonModule,
+    Loader,
+    RouterModule
+  ],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
 export class ProductList {
   private productService = inject(Product);
+  private router = inject(Router)
+  private route = inject(ActivatedRoute)
   destroy$ = new Subject<void>();
   loading: boolean = false;
   public currency!: ['USD', 'EUR', 'GBP'];
 
+
   products$ = this.productService.getproductList();
+
+  viewProduct(item: IProduct){
+    this.router.navigate([ item.id], {relativeTo: this.route})
+    console.log('view item')
+  }
+
+  addToCart(){
+    console.log('Added to cart')
+  }
+
 }

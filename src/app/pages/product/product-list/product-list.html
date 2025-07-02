@@ -9,6 +9,7 @@
     @for(item of items.products; track (item.id || $index)) {
     <div
       class="group flex flex-col bg-white hover:shadow-xl cursor-pointer overflow-hidden rounded-lg transition-all duration-300"
+      (click)="viewProduct(item)"
     >
       <span>
         <img
@@ -23,12 +24,13 @@
           {{ item.price | currency : "EUR" }}
         </span>
         <span class="text-sm mb-6">
-          {{ item.description | truncate }}
+          {{ item.description | truncate:50 }}
         </span>
         <div class="mt-auto">
           <button
-            class="bg-primary w-full opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 rounded-sm btn"
+            class="bg-primary w-full lg:opacity-0 lg:invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 rounded-sm btn"
             mat-flat-button
+            (click)="addToCart()"
           >
             Add to cart
           </button>
