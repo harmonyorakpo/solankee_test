@@ -6,6 +6,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class Notification {
+  private showNotificationSubject = new BehaviorSubject<boolean>(false);
+  showNotification$: Observable<boolean> =
+    this.showNotificationSubject.asObservable();
+
   public notificationSubject = new BehaviorSubject<NotificationData>({
     type: 'info',
     message: '',
@@ -25,8 +29,4 @@ export class Notification {
       show: false,
     });
   }
-
-  private showNotificationSubject = new BehaviorSubject<boolean>(false);
-  showNotification$: Observable<boolean> =
-    this.showNotificationSubject.asObservable();
 }
