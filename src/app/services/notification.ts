@@ -5,19 +5,19 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class Notification {
+export class NotificationService {
   private showNotificationSubject = new BehaviorSubject<boolean>(false);
   showNotification$: Observable<boolean> =
     this.showNotificationSubject.asObservable();
 
   public notificationSubject = new BehaviorSubject<NotificationData>({
-    type: 'info',
+    type: 'error',
     message: '',
     show: false,
   });
 
   showNotification(
-    type: 'success' | 'error' | 'info' | 'warning',
+    type: 'success' | 'error',
     message: string
   ) {
     this.notificationSubject.next({ type, message, show: true });

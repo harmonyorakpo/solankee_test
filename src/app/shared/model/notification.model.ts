@@ -1,5 +1,5 @@
 export interface NotificationData {
-  type: 'success' | 'error' | 'info' | 'warning';
+  type: 'success' | 'error';
   message: string;
   show: boolean;
 }

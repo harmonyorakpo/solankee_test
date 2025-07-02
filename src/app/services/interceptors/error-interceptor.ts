@@ -6,14 +6,14 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Notification } from '@services/notification';
+import { NotificationService } from '@services/notification';
 import { Observable, catchError, throwError } from 'rxjs';
 
 export const httpErrorInterceptor: HttpInterceptorFn = (
   req: HttpRequest<any>,
   next: HttpHandlerFn
 ): Observable<HttpEvent<any>> => {
-  const notification = inject(Notification);
+  const notification = inject(NotificationService);
 
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {

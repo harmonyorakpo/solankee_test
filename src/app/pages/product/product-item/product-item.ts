@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
-import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from '@models/product.model';
 
 @Component({
