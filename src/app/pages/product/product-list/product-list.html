@@ -12,16 +12,17 @@
         />
       </span>
       <div class="flex flex-col p-4">
-        <span class="font-medium"> Female New Balance </span>
-        <span class="text-xl font-semibold">
+        <span class="font-medium text-sm mb-1"> Female New Balance </span>
+        <span class="text-xl font-semibold mb-2">
           {{ "80" | currency : "GBP" }}
         </span>
-        <span class="text-sm">
-          {{ description | truncate : 80 }}
+        <span class="text-sm mb-8">
+          {{ description | truncate }}
         </span>
-        <div>
-
-            <button>Add to cart</button>
+        <div class="">
+          <button class="bg-primary w-full mt-auto" mat-flat-button>
+            Add to cart
+          </button>
         </div>
       </div>
     </div>

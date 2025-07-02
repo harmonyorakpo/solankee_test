@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { IProduct } from '@models/product.model';
 import { TruncatePipe } from '@pipes/truncate-pipe';
 import { Product } from '@services/product';
@@ -7,7 +9,7 @@ import { finalize, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
-  imports: [CommonModule, TruncatePipe ],
+  imports: [CommonModule, TruncatePipe, MatInputModule , MatButtonModule],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
@@ -19,6 +21,7 @@ export class ProductList implements OnInit {
 
    description:string = 'The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive.';
 
+   products$ = this.productService.getproductList()
 
   ngOnInit(): void {
     // this.productService
