@@ -8,5 +8,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.scss'
 })
 export class Header {
-
+cartItemCount = 2;
 }
