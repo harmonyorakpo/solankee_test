@@ -8,6 +8,8 @@ import { Subject } from 'rxjs';
 import { Loader } from '../../../shared/components/loader/loader';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { IProduct } from '@models/product.model';
+import { Cart } from '@services/cart';
+import { NotificationService } from '@services/notification';
 
 @Component({
   selector: 'app-product-list',
@@ -18,18 +20,21 @@ import { IProduct } from '@models/product.model';
     MatButtonModule,
     Loader,
     RouterModule,
-    
   ],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
 export class ProductList {
   private productService = inject(Product);
+  private notificationService = inject(NotificationService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
-  destroy$ = new Subject<void>();
+  private cartService = inject(Cart);
+
   loading: boolean = false;
   public currency!: ['USD', 'EUR', 'GBP'];
+  selectedQuantity!: number;
+  destroy$ = new Subject<void>();
 
   products$ = this.productService.getproductList();
 
@@ -38,12 +43,15 @@ export class ProductList {
       relativeTo: this.route,
       state: { product },
     });
-    console.log('view item');
   }
 
-  addToCart(event: Event, item: IProduct) {
+  addToCart(event: Event, product: IProduct) {
     event.stopPropagation();
 
-    console.log('Adding to cart:', item);
+    this.cartService.addToCart(product, this.selectedQuantity);
+    this.notificationService.showNotification(
+      'success',
+      `${product.name}  added to cart`
+    );
   }
 }
