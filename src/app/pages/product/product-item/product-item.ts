@@ -24,11 +24,9 @@ export class ProductItem implements OnInit {
     console.log(this.product);
   }
 
-  addToCart() {
+  addToCart(product: any) {
+    console.log(product)
     console.log('Add to cart');
-    this.notificationService.showNotification(
-      'success',
-      'item added to cart'
-    );
+    this.notificationService.showNotification('success', 'item added to cart');
   }
 }
