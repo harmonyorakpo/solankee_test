@@ -11,8 +11,6 @@ import { IProduct } from '@models/product.model';
   styleUrl: './product-item.scss',
 })
 export class ProductItem implements OnInit {
-  private route = inject(ActivatedRoute);
-  private router = inject(Router);
   product: IProduct | null = null;
 
   ngOnInit(): void {
@@ -22,8 +20,7 @@ export class ProductItem implements OnInit {
   retrieveData() {
     const state = history.state;
     this.product = state?.product;
-    console.log(this.product)
-   
+    console.log(this.product);
   }
 
   addToCart() {
