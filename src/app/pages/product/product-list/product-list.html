@@ -1,8 +1,12 @@
 <div class="px-20 mb-64 h-screen">
   <h1 class="text-xl font-semibold mb-4 py-4">Product List</h1>
+
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    @if((products$ | async); as items){ @for(item of items.products; track
+    (item.id || $index)){
+
     <div
-      class="flex flex-col bg-white hover:shadow-xl cursor-pointer overflow-hidden rounded-lg"
+      class="group flex flex-col bg-white hover:shadow-xl cursor-pointer overflow-hidden rounded-lg transition-all duration-300"
     >
       <span>
         <img
@@ -12,19 +16,23 @@
         />
       </span>
       <div class="flex flex-col p-4">
-        <span class="font-medium text-sm mb-1"> Female New Balance </span>
-        <span class="text-xl font-semibold mb-2">
-          {{ "80" | currency : "GBP" }}
+        <span class="font-medium text-sm mb-1"> {{item.name}} </span>
+        <span class="text-xl font-semibold mb-2"> {{item.price | currency: 'EUR' }} </span>
+        <span class="text-sm mb-6">
+          {{item.description}}
         </span>
-        <span class="text-sm mb-8">
-          {{ description | truncate }}
-        </span>
-        <div class="">
-          <button class="bg-primary w-full mt-auto" mat-flat-button>
+        <div class="mt-auto">
+          <button
+            class="bg-primary w-full opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 rounded-sm btn"
+            mat-flat-button
+          >
             Add to cart
           </button>
         </div>
       </div>
     </div>
+    } } @else {
+    <p>No content returned</p>
+    }
   </div>
 </div>

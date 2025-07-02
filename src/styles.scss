@@ -1,17 +1,21 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.dev/guide/theming
 @use "@angular/material" as mat;
-@use './custom-palette.scss';
+@use "./custom-palette";
 
 @include mat.elevation-classes();
 @include mat.app-background();
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  @include mat.all-component-themes(custom-palette.$light-theme);
+}
+
 html,
 body {
   height: 100%;
@@ -19,38 +23,5 @@ body {
 body {
   margin: 0;
   font-family: "Montserrat", "Helvetica Neue", sans-serif;
-  color: #434E58;
+  color: #434e58;
 }
-
-html {
-  @include mat.all-component-themes(theme.$light-theme);
-}
-
-// Create palette from your single color
-$simple-primary: mat.define-palette((
-  50: #fdf2f0,
-  100: #fce4de,
-  200: #f8c4b6,
-  300: #f4a48e,
-  400: #ee8b75,
-  500: #E77B63,
-  600: #e06749,
-  700: #d85a3f,
-  800: #cf4d35,
-  900: #c23a23,
-  contrast: (
-    50: rgba(black, 0.87),
-    100: rgba(black, 0.87),
-    200: rgba(black, 0.87),
-    300: rgba(black, 0.87),
-    400: rgba(black, 0.87),
-    500: white,
-    600: white,
-    700: white,
-    800: white,
-    900: white,
-  )
-));
-
-
-
