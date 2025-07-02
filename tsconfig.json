@@ -17,7 +17,7 @@
     "baseUrl": "./",
     "paths": {
       "@services/*": ["src/app/services/*"],
-      "@components/*": ["src/app/components/*"],
+      "@components/*": ["src/app/shared/components*"],
       "@models/*": ["src/app/shared/model/*"]
     }
   },

@@ -1,4 +1,4 @@
-interface Product {
+interface IProduct {
   id: string;
   name: string;
   quantity: number;
@@ -8,5 +8,5 @@ interface Product {
 
 interface CheckoutData {
   statusCode: number;
-  products: Product[];
+  products: IProduct[];
 }
