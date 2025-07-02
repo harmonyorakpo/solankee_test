@@ -17,29 +17,33 @@ import { IProduct } from '@models/product.model';
     MatInputModule,
     MatButtonModule,
     Loader,
-    RouterModule
+    RouterModule,
+    
   ],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
 export class ProductList {
   private productService = inject(Product);
-  private router = inject(Router)
-  private route = inject(ActivatedRoute)
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
   destroy$ = new Subject<void>();
   loading: boolean = false;
   public currency!: ['USD', 'EUR', 'GBP'];
 
-
   products$ = this.productService.getproductList();
 
-  viewProduct(item: IProduct){
-    this.router.navigate([ item.id], {relativeTo: this.route})
-    console.log('view item')
+  viewProduct(product: IProduct) {
+    this.router.navigate(['../product-list', product.id], {
+      relativeTo: this.route,
+      state: { product },
+    });
+    console.log('view item');
   }
 
-  addToCart(){
-    console.log('Added to cart')
-  }
+  addToCart(event: Event, item: IProduct) {
+    event.stopPropagation();
 
+    console.log('Adding to cart:', item);
+  }
 }

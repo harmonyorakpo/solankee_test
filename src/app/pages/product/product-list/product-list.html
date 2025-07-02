@@ -30,7 +30,7 @@
           <button
             class="bg-primary w-full lg:opacity-0 lg:invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 rounded-sm btn"
             mat-flat-button
-            (click)="addToCart()"
+            (click)="addToCart($event, item)"
           >
             Add to cart
           </button>
