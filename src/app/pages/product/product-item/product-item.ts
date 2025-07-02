@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { IProduct } from '@models/product.model';
+import { NotificationService } from '@services/notification';
 
 @Component({
   selector: 'app-product-item',
@@ -10,6 +11,7 @@ import { IProduct } from '@models/product.model';
   styleUrl: './product-item.scss',
 })
 export class ProductItem implements OnInit {
+  private notificationService = inject(NotificationService);
   product: IProduct | null = null;
 
   ngOnInit(): void {
@@ -24,5 +26,9 @@ export class ProductItem implements OnInit {
 
   addToCart() {
     console.log('Add to cart');
+    this.notificationService.showNotification(
+      'success',
+      'item added to cart'
+    );
   }
 }
