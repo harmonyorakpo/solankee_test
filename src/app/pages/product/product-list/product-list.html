@@ -1,1 +1,29 @@
-<p>product-list works!</p>
+<div class="px-20 mb-64 h-screen">
+  <h1 class="text-xl font-semibold mb-4 py-4">Product List</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div
+      class="flex flex-col bg-white hover:shadow-xl cursor-pointer overflow-hidden rounded-lg"
+    >
+      <span>
+        <img
+          class="w-full h-48 object-cover"
+          src="assets/icons/Womens-ShoesPGP-CompX-Image2.jpg"
+          alt="female shoes"
+        />
+      </span>
+      <div class="flex flex-col p-4">
+        <span class="font-medium"> Female New Balance </span>
+        <span class="text-xl font-semibold">
+          {{ "80" | currency : "GBP" }}
+        </span>
+        <span class="text-sm">
+          {{ description | truncate : 80 }}
+        </span>
+        <div>
+
+            <button>Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

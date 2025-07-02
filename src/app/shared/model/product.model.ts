@@ -1,4 +1,4 @@
-interface IProduct {
+export interface IProduct {
   id: string;
   name: string;
   quantity: number;
@@ -6,7 +6,7 @@ interface IProduct {
   image: string;
 }
 
-interface CheckoutData {
+export interface CheckoutData {
   statusCode: number;
   products: IProduct[];
 }

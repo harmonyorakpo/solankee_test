@@ -10,11 +10,11 @@ export const productRoutes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'products',
+        redirectTo: 'product-list',
         pathMatch: 'full',
       },
       {
-        path: 'products',
+        path: 'product-list',
         component: ProductList,
       },
       {
