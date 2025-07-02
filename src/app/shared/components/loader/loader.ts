@@ -6,7 +6,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   selector: 'app-loader',
   imports: [CommonModule, MatProgressSpinnerModule],
   templateUrl: './loader.html',
-  styleUrl: './loader.scss'
+  styleUrl: './loader.scss',
 })
 export class Loader {
   @Input() size = 30;
