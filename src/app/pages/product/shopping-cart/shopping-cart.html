@@ -1,3 +1,8 @@
+
+
+@if(loading){
+ <app-loader [info]="'processing your purchase...'" ></app-loader>
+} @else {
 <div class="px-20 mx-auto">
   <h1 class="text-2xl font-bold py-4">Shopping Cart</h1>
 
@@ -26,7 +31,6 @@
 
   } @if (cartItems().length > 0) {
   <div class="flex flex-col lg:flex-row gap-8">
-    <!-- Cart Items -->
     <div class="flex-1 space-y-4">
       @for (item of cartItems(); track item.id) {
       <div
@@ -47,10 +51,9 @@
           <p class="text-sm text-gray-600 mb-2 line-clamp-2">
             {{ item.description }}
           </p>
-          <p class="text-lg font-bold">{{ item.price | currency : "EUR"  }}</p>
+          <p class="text-lg font-bold">{{ item.price | currency : "EUR" }}</p>
         </div>
 
-        <!-- Quantity Controls -->
         <div class="flex items-center gap-2 bg-gray-50 rounded-lg p-2">
           <button
             (click)="decreaseQuantity(item)"
@@ -70,35 +73,35 @@
           />
 
           <button
-            (click)="increaseQuantity(item)" [disabled]="item.quantity === 0 || getQuantity(item) >= item.quantity"
+            (click)="increaseQuantity(item)"
+            [disabled]="
+              item.quantity === 0 || getQuantity(item) >= item.quantity
+            "
             class="w-8 h-8 flex items-center justify-center rounded-full bg-white border border-gray-300 hover:bg-gray-100 transition-colors"
           >
             <span class="text-gray-600">+</span>
           </button>
         </div>
 
-        <!-- Item Total -->
         <div class="text-center sm:text-right min-w-[80px]">
           <p class="text-lg font-bold text-gray-900">
-            {{ (item.price * item.cartQuantity).toFixed(2) | currency : "EUR"  }}
+            {{ (item.price * item.cartQuantity).toFixed(2) | currency : "EUR" }}
           </p>
         </div>
 
-        <!-- Remove Button -->
         <button
           (click)="removeItem(item.id)"
           class="w-8 h-8 flex items-center justify-center rounded-full text-red-600 hover:bg-red-50 transition-colors"
           title="Remove item"
         >
           <span class="text-lg">
-            <img src="assets/icons/delete.png" alt="delete item">
+            <img src="assets/icons/delete.png" alt="delete item" />
           </span>
         </button>
       </div>
       }
     </div>
 
-    <!-- Cart Summary -->
     <div class="lg:w-96 bg-gray-50 p-6 rounded-lg h-fit">
       <h2 class="text-xl font-semibold text-gray-900 mb-4">Order Summary</h2>
 
@@ -113,7 +116,6 @@
         >
           <span>Total Price:</span>
           <span>{{ totalPrice().toFixed(2) | currency : "EUR" }}</span>
-         
         </div>
       </div>
 
@@ -136,3 +138,4 @@
   </div>
   }
 </div>
+}

@@ -14,9 +14,29 @@ export interface ProductResponse {
 
 export interface checkoutData {
   quantity: number;
-  id: number
+  product_id: number
 }
 
 export interface CartItem extends IProduct {
-  cartQuantity: number; // Quantity in cart (different from product quantity)
+  cartQuantity: number;
+}
+
+export interface CheckoutItem {
+  name: string;
+  quantity: number;
+  price: number;
+  description: string;
+  image: string;
+  id: number;
+  total_price: number;
+}
+
+export interface CheckoutData {
+  total_price: number;
+  items: CheckoutItem[];
+}
+
+export interface CheckoutResponse {
+  statusCode: number;
+  checkout: CheckoutData;
 }
