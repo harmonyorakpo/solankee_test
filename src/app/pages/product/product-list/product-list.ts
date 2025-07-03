@@ -54,4 +54,9 @@ export class ProductList {
       `${product.name}  added to cart`
     );
   }
+
+
+  getQuantity(product: IProduct) {
+    return this.cartService.getProductQuantityInCart(product.id) || 0;
+  }
 }
