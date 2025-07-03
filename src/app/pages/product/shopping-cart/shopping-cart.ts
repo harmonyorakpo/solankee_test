@@ -76,14 +76,14 @@ export class ShoppingCart implements OnDestroy {
   }
 
   checkout() {
-    console.log('clicked');
+ 
     this.loading = true;
     const payload = this.cartItems().map((item) => ({
       quantity: item.cartQuantity,
       product_id: item.id,
     }));
 
-    console.log('The payload', payload);
+    
     this.productService
       .checkoutitem(payload)
       .pipe(

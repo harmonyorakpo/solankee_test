@@ -27,7 +27,6 @@ export class ProductItem implements OnInit {
   }
 
   addToCart(product: any) {
-    console.log(product);
     this.cartService.addToCart(product, this.selectedQuantity);
     this.notificationService.showNotification(
       'success',
