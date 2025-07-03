@@ -65,11 +65,12 @@
             [value]="item.cartQuantity"
             (change)="updateQuantity(item.id, $event)"
             min="1"
+            [max]="item.quantity"
             class="w-16 text-center border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           />
 
           <button
-            (click)="increaseQuantity(item)"
+            (click)="increaseQuantity(item)" [disabled]="item.quantity === 0 || getQuantity(item) >= item.quantity"
             class="w-8 h-8 flex items-center justify-center rounded-full bg-white border border-gray-300 hover:bg-gray-100 transition-colors"
           >
             <span class="text-gray-600">+</span>
@@ -98,7 +99,7 @@
     </div>
 
     <!-- Cart Summary -->
-    <div class="lg:w-80 bg-gray-50 p-6 rounded-lg h-fit">
+    <div class="lg:w-96 bg-gray-50 p-6 rounded-lg h-fit">
       <h2 class="text-xl font-semibold text-gray-900 mb-4">Order Summary</h2>
 
       <div class="space-y-3 mb-6">

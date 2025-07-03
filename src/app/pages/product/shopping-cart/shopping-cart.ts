@@ -51,6 +51,11 @@ export class ShoppingCart {
       this.cartService.updateQuantity(item.id, item.cartQuantity - 1);
     }
   }
+
+
+  getQuantity(item: any) {
+    return this.cartService.getProductQuantityInCart(item.id) || 0;
+  }
   // increaseQuantity(item: CartItem): void {
   //   this.cartService.updateQuantity(item.id, item.cartQuantity + 1);
   // }
