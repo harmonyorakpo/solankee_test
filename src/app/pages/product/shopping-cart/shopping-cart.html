@@ -47,7 +47,7 @@
           <p class="text-sm text-gray-600 mb-2 line-clamp-2">
             {{ item.description }}
           </p>
-          <p class="text-lg font-bold">${{ item.price }}</p>
+          <p class="text-lg font-bold">{{ item.price | currency : "EUR"  }}</p>
         </div>
 
         <!-- Quantity Controls -->
@@ -79,7 +79,7 @@
         <!-- Item Total -->
         <div class="text-center sm:text-right min-w-[80px]">
           <p class="text-lg font-bold text-gray-900">
-            ${{ (item.price * item.cartQuantity).toFixed(2) }}
+            {{ (item.price * item.cartQuantity).toFixed(2) | currency : "EUR"  }}
           </p>
         </div>
 
@@ -111,7 +111,8 @@
           class="flex justify-between text-xl font-bold text-gray-900 pt-3 border-t border-gray-200"
         >
           <span>Total Price:</span>
-          <span>${{ totalPrice().toFixed(2) }}</span>
+          <span>{{ totalPrice().toFixed(2) | currency : "EUR" }}</span>
+         
         </div>
       </div>
 
