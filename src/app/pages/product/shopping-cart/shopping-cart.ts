@@ -23,6 +23,7 @@ export class ShoppingCart {
     private cartService = inject(Cart);
     private router = inject(Router)
     private route = inject(ActivatedRoute)
+    public currency!: ['USD', 'EUR', 'GBP'];
 
   cartItems = this.cartService.items;
   totalItems = this.cartService.itemCount;
